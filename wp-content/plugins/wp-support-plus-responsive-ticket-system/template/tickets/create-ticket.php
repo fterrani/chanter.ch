@@ -45,7 +45,7 @@ if(!isset($_REQUEST['action'])) :
 
     ?>
 
-    <div class="container" style="<?php echo $rtl_css; ?>">
+<!--<div class="container" style="<?php echo $rtl_css; ?>">-->
 
         <h2 class="page-header"><?php _e('Create New Ticket', 'wp-support-plus-responsive-ticket-system')?></h2>
 
@@ -122,22 +122,24 @@ if(!isset($_REQUEST['action'])) :
             <input type="file" id="image_upload" class="hidden" onchange="">
             <input type="file" id="attachment_upload" class="hidden" onchange="">
 						<input type="hidden" id="captcha_code" name="captcha_code" value="">
-						
+			<button type="submit" class="btn btn-success form-control"><?php _e('Submit Ticket', 'wp-support-plus-responsive-ticket-system')?></button>
+
+<!--		
             <div class="form-group col-md-12 wpsp_form_btn_bottom">
 
-                <div class="form-group col-md-2 inner_control">
+                 <div class="form-group col-md-2 inner_control">
                     <button type="submit" class="btn btn-success form-control"><?php _e('Submit Ticket', 'wp-support-plus-responsive-ticket-system')?></button>
                 </div>
 
-                <div class="form-group col-md-2 inner_control">
+               <div class="form-group col-md-2 inner_control">
                     <button type="button" class="btn btn-default form-control" onclick="reset_create_ticket();"><?php _e('Reset Form', 'wp-support-plus-responsive-ticket-system')?></button>
                 </div>
 
             </div>
-
+-->
         </form>
 
-    </div>
+<!--</div>-->
     <?php
 
 endif;

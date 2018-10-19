@@ -12,9 +12,9 @@ do_action('action_before_sign_in');
 
 if( !$wpsp_user_session ):
 ?>
-<div class="container">
+<!-- <div class="container"> -->
 <?php 
-if(!$enable_default_login){
+if(!$enable_default_login && is_user_logged_in()){
 	if($wpsupportplus->functions->get_default_login()){?>
     <form class="form-signin" method="post" action="" >
         
@@ -57,7 +57,7 @@ if(!$enable_default_login){
     <?php if($wpsupportplus->functions->is_allow_guest_ticket()):?>
     
         <form class="form-signin" method="post" action="" >
-               <?php if(!$enable_default_login){?>
+                <?php /* if(!$enable_default_login){?>
 								 <div id="wpsp_or_guest_login" class="col-md-12" style="padding-left: 0px;padding-right: 0px;">
 		                 <div class="col-md-4" style="padding-left: 0px;padding-right: 0px;">
 		                     <hr style="border-top: 1px solid #000;">
@@ -69,7 +69,7 @@ if(!$enable_default_login){
 		                     <hr style="border-top: 1px solid #000;">
 		                 </div>
 		             </div>
-							<?php }?>
+							<?php } */ ?>
             
 							<div class="col-md-12" style="padding-left: 0px;padding-right: 0px;">
                 <h2 class="form-signin-heading" style="">
@@ -94,7 +94,7 @@ if(!$enable_default_login){
         </form>
     <?php endif;?>
 
-</div>
+<!-- </div> -->
 <?php
 endif;
 

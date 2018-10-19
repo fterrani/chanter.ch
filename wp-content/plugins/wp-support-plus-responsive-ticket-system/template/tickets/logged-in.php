@@ -52,7 +52,8 @@ if( $wpsupportplus->functions->is_staff($current_user) ) {
 		);
 }
 
-$default_tab = apply_filters( 'wpsp_tickets_default_section', 'ticket-list' );
+//$default_tab = apply_filters( 'wpsp_tickets_default_section', 'ticket-list' ); 
+$default_tab = apply_filters( 'wpsp_tickets_default_section', 'create-ticket' );
 
 $current_tab = isset($_REQUEST['section']) ? sanitize_text_field($_REQUEST['section']) : $default_tab;
 

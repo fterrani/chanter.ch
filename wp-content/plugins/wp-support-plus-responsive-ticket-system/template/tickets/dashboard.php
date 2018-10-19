@@ -5,9 +5,9 @@ exit; // Exit if accessed directly
 
 global $wpsupportplus, $current_user, $wpdb;
 ?>
-
+<!--
 <div class="container">
-
+-->
 	  <?php do_action('wpsp_dashboard_before_ticket_status_counts')?>
 
 		<?php
@@ -78,7 +78,9 @@ global $wpsupportplus, $current_user, $wpdb;
 	}
 ?>
 <br><br>
+<!--
 </div>
+-->
 
 <?php do_action('wpsp_dashboard_after_ticket_status_counts')?>
 
@@ -98,7 +100,7 @@ if($wpsupportplus->functions->is_administrator($current_user) || $wpsupportplus-
 		}
 ?>
 
-	<div class="container" style="<?php echo $rtl_css; ?>">
+<!--<div class="container" style="<?php echo $rtl_css; ?>">-->
 
 		<h3><?php _e('Ticket Statistics','wp-support-plus-responsive-ticket-system');?></h3>
 
@@ -193,7 +195,7 @@ if($wpsupportplus->functions->is_administrator($current_user) || $wpsupportplus-
 		 </table>
 
 		</div>
-</div>
+<!--</div>-->
 <?php
 }
 ?>

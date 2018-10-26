@@ -1,0 +1,48 @@
+version: '3.3'
+
+services:
+
+  wordpress:
+    image: wordpress
+    depends_on:
+    - mysql
+    environment:
+      WORDPRESS_DB_USER:     $DB_USER
+      WORDPRESS_DB_PASSWORD: $DB_PASSWORD
+      VIRTUAL_HOST:          ${DOMAINS}
+      LETSENCRYPT_HOST:      ${DOMAINS}
+      LETSENCRYPT_EMAIL:     ${EMAIL}
+    volumes:
+      - .:/var/www/html
+
+  phpmyadmin:
+    image:                 phpmyadmin/phpmyadmin
+    restart:               always
+    environment:
+      PMA_ARBITRARY:       1
+      PMA_HOST:            mysql
+      PMA_PORT:            3306
+      VIRTUAL_HOST:        ${PHPMYADMINDOMAINS}
+      LETSENCRYPT_HOST:    ${PHPMYADMINDOMAINS}
+      LETSENCRYPT_EMAIL:   ${EMAIL}
+    volumes:
+    - /sessions
+    depends_on:
+    - mysql
+
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: $DB_ROOT_PASSWORD
+      MYSQL_DATABASE:      $DB_DATABASE
+      MYSQL_USER:          $DB_USER
+      MYSQL_PASSWORD:      $DB_PASSWORD
+    command:               ["bash", "-c", 'docker-entrypoint.sh --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci']
+    volumes:
+    - /var/lib/mysql
+    - ./db_wp_chanter.sql:/docker-entrypoint-initdb.d/db.sql
+
+networks:
+  default:
+    external:
+      name:                ${NETWORK}

@@ -4,6 +4,7 @@ services:
 
   wordpress:
     build:                   ./docker_wordpress
+    restart:                 on-failure
     depends_on:
     - mysql
     container_name:          grp5-wp

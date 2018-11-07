@@ -3,17 +3,18 @@ version: '3.3'
 services:
 
   wordpress:
-    image: wordpress
+    build: ./docker_wordpress
     depends_on:
     - mysql
     environment:
-      WORDPRESS_DB_USER:     $DB_USER
-      WORDPRESS_DB_PASSWORD: $DB_PASSWORD
+      WORDPRESS_DB_USER:     ${DB_USER}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
       VIRTUAL_HOST:          ${DOMAINS}
       LETSENCRYPT_HOST:      ${DOMAINS}
       LETSENCRYPT_EMAIL:     ${EMAIL}
     volumes:
-      - .:/var/www/html
+     # éventuellement: - ./wp_files/wp-content:/var/www/html/wp-content
+      - ./docker_wordpress/wp_files:/var/www/html
 
   phpmyadmin:
     image:                 phpmyadmin/phpmyadmin
@@ -40,7 +41,7 @@ services:
     command:               ["bash", "-c", 'docker-entrypoint.sh --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci']
     volumes:
     - /var/lib/mysql
-    - ./db_wp_chanter.sql:/docker-entrypoint-initdb.d/db.sql
+    - ./docker_mysql/db_wp_chanter.sql:/docker-entrypoint-initdb.d/db.sql
 
 networks:
   default:

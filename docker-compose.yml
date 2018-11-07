@@ -3,9 +3,10 @@ version: '3.3'
 services:
 
   wordpress:
-    build: ./docker_wordpress
+    build:                   ./docker_wordpress
     depends_on:
     - mysql
+    container_name:          grp5-wp
     environment:
       WORDPRESS_DB_USER:     ${DB_USER}
       WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
@@ -13,12 +14,13 @@ services:
       LETSENCRYPT_HOST:      ${DOMAINS}
       LETSENCRYPT_EMAIL:     ${EMAIL}
     volumes:
-     # éventuellement: - ./wp_files/wp-content:/var/www/html/wp-content
-      - ./docker_wordpress/wp_files:/var/www/html
+     # volume (wp-content seulement) ? ==>  - ./wp_files/wp-content:/var/www/html/wp-content
+     # volume (tous les fichiers) ? ==>  - ./docker_wordpress/wp_files:/var/www/html
 
   phpmyadmin:
     image:                 phpmyadmin/phpmyadmin
     restart:               always
+    container_name:        grp5-pma
     environment:
       PMA_ARBITRARY:       1
       PMA_HOST:            mysql
@@ -33,6 +35,7 @@ services:
 
   mysql:
     image: mysql:5.7
+    container_name:        grp5-mysql
     environment:
       MYSQL_ROOT_PASSWORD: $DB_ROOT_PASSWORD
       MYSQL_DATABASE:      $DB_DATABASE

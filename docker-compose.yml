@@ -13,9 +13,10 @@ services:
       VIRTUAL_HOST:          ${DOMAINS}
       LETSENCRYPT_HOST:      ${DOMAINS}
       LETSENCRYPT_EMAIL:     ${EMAIL}
-    volumes:
-     # volume (wp-content seulement) ? ==>  - ./wp_files/wp-content:/var/www/html/wp-content
-     # volume (tous les fichiers) ? ==>  - ./docker_wordpress/wp_files:/var/www/html
+#    Volumes pour wp-content uniquement ou pour tous les fichiers (tests)
+#    volumes:
+#    - ./wp_files/wp-content:/var/www/html/wp-content
+#    - ./docker_wordpress/wp_files:/var/www/html
 
   phpmyadmin:
     image:                 phpmyadmin/phpmyadmin

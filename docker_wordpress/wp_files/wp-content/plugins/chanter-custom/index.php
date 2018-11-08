@@ -78,7 +78,7 @@ function shortcode_get_committee($atts){
 	return $display_committee;
 }
 add_shortcode('committee_details', 'shortcode_get_committee');
-?>
+
 
 
 

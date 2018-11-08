@@ -87,7 +87,7 @@ define('WP_DEBUG', false);
 
 // On désactive l'affichage des erreurs PHP (souhaitable en production).
 // Les erreurs sont tout de même logguées en fichier texte.
-ini_set('display_errors', '0');
+// ini_set('display_errors', '0');
 
 
 /* C’est tout, ne touchez pas à ce qui suit ! */

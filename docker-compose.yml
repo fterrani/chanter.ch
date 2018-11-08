@@ -9,7 +9,7 @@ services:
     - mysql
     container_name:          grp5-wp
     environment:
-      WORDPRESS_DB_HOST:     localhost
+      WORDPRESS_DB_HOST:     ${DOMAINS}
       WORDPRESS_DB_NAME:     ${DB_DATABASE}
       WORDPRESS_DB_USER:     ${DB_USER}
       WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}

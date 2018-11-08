@@ -16,9 +16,9 @@ services:
       LETSENCRYPT_HOST:      ${DOMAINS}
       LETSENCRYPT_EMAIL:     ${EMAIL}
 #    Volumes pour wp-content uniquement ou pour tous les fichiers (tests)
-#    volumes:
-#    - ./wp_files/wp-content:/var/www/html/wp-content
-#    - ./docker_wordpress/wp_files:/var/www/html
+    volumes:
+#    - ./docker_wordpress/wp_files/wp-content:/var/www/html/wp-content
+    - ./docker_wordpress/wp_files:/var/www/html
 
   phpmyadmin:
     image:                 phpmyadmin/phpmyadmin

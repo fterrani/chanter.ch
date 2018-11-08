@@ -20,15 +20,17 @@
 	<div class="entry-content">
 		<!-- Logical part : get data from pods to automatically display information about the choir -->
 		<?php
+		
 		//Get current choir ID
 		$id_choir = get_the_ID();
 		//Get the current choir data
 		$params_choir = array(
 			'where' => 't.id = '.$id_choir
 		);
-		$current_choir = pods('choir', $params_choir);
+		$current_choir = pods('fscv_choir', $params_choir);
 		$current_choir->fetch();
 		//Store every choir fields in variables
+		$choir_name = $current_choir->display( 'post_title' );
 		$locality = $current_choir->display( 'locality' );
 		$postcode = $current_choir->display( 'postcode' );
 		$street = $current_choir->display( 'street' );
@@ -39,23 +41,27 @@
 		$staff = $current_choir->display( 'staff_number' );
 		$creation_year = $current_choir->display( 'creation_year' );
 		$organizations = $current_choir->display( 'fscv_organization' );
-		//$type = $current_choir->display( 'type' );
-		//$institution = $current_choir->display( 'institution' );
-		//$language = $current_choir->display( 'language' );
+		$type = $current_choir->display( 'choir_type' );
+		$institution = $current_choir->display( 'institution' );
+		$language = $current_choir->display( 'language' );
+		
+		echo('<div style="background-color:lightyellow">'.$choir_name.' a été fondé en '.$creation_year.' et possède '.$staff.' membres actifs. Il s agit d un choeur de '.$type.' rattaché à '.$institution.'.
+			Le choeur chante en '.$language.'. Rendez-vous sur '.$website.' pour visiter leur site. </div></br>');
+			
+		
 		//Get the people's id involved in the current choir		
 		$params_attrib = array(
 			'where' => 'choir.id = '.$id_choir,
 			'limit' => 5
 		);
-		$choir_attributions = pods('fscv_choir_attributi', $params_attrib);
+		$choir_attributions = pods('fscv_choir_attrib', $params_attrib);
 		$id_people = array();		
 		if ( $choir_attributions->total() > 0 ) {
 			while($choir_attributions->fetch()){
-				echo('Fonction : '.$choir_attributions->field( 'attribution.attribution_name' ).
+				echo('Fonction : '.$choir_attributions->field( 'attribution.post_title' ).
 					' || Nom : '.$choir_attributions->field( 'person.person_title' ).' '.
 					$choir_attributions->field( 'person.first_name' ).' '.
-					$choir_attributions->field( 'person.last_name' ));
-					
+					$choir_attributions->field( 'person.last_name' ).'</br>');				
 			}
 		}
 		?>
@@ -112,4 +118,3 @@
       </div>
    <?php endif; ?>
 <?php }
- ?>

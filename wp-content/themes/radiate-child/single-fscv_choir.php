@@ -15,7 +15,7 @@ get_header(); ?>
 		<?php while ( have_posts() ) : the_post(); ?>
 
 			<?php 
-			get_template_part( 'content', 'choir' ); 
+			get_template_part( 'content', 'fscv_choir' ); 
 			?>
 			
 

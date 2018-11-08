@@ -28,7 +28,7 @@ services:
     environment:
       PMA_ARBITRARY:       1
       PMA_HOST:            mysql
-      PMA_PORT:            55698
+      PMA_PORT:            3306
       VIRTUAL_HOST:        ${PHPMYADMINDOMAINS}
       LETSENCRYPT_HOST:    ${PHPMYADMINDOMAINS}
       LETSENCRYPT_EMAIL:   ${EMAIL}

@@ -28,7 +28,7 @@ define('DB_USER', 'whatever');
 define('DB_PASSWORD', 'AdminHevs01');
 
 /** Adresse de l’hébergement MySQL. */
-define('DB_HOST', 'localhost');
+define('DB_HOST', 'grp5.p645.hevs.ch');
 
 /** Jeu de caractères à utiliser par la base de données lors de la création des tables. */
 define('DB_CHARSET', 'utf8mb4');

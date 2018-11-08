@@ -534,8 +534,8 @@ CREATE TABLE `wp_options` (
 --
 
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
-(1, 'siteurl', 'http://grp5.p645.hevs.ch', 'yes'),
-(2, 'home', 'http://grp5.p645.hevs.ch', 'yes'),
+(1, 'siteurl', 'https://grp5.p645.hevs.ch', 'yes'),
+(2, 'home', 'https://grp5.p645.hevs.ch', 'yes'),
 (3, 'blogname', 'FSCV', 'yes'),
 (4, 'blogdescription', 'La vie du monde choral en Valais !', 'yes'),
 (5, 'users_can_register', '0', 'yes'),

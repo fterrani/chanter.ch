@@ -1,4 +1,6 @@
 
+SetEnvIf X-Forwarded-Proto https HTTPS
+
 # BEGIN WordPress
 <IfModule mod_rewrite.c>
 RewriteEngine On

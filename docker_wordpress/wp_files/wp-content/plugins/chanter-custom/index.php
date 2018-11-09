@@ -115,6 +115,10 @@ function shortcode_get_committee($atts){
 	return $display_committee.'</br>'.$display_people;
 }
 add_shortcode('committee_details', 'shortcode_get_committee');
+<<<<<<< HEAD:wp-content/plugins/chanter-custom/index.php
+=======
+
+>>>>>>> 11b56aeac8b5b36282e312bd2ec00276329e42ff:docker_wordpress/wp_files/wp-content/plugins/chanter-custom/index.php
 
 
 
